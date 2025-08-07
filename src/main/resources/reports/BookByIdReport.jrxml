@@ -1,0 +1,69 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="BookByIdReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="295c42a3-767e-4d15-8c54-0fe2ba3aa21e">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mySQL New Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value="Ym9va19tYW5hZ2VyLmJvb2tzICwxNSwxNSxjZGIyZDI3Ny0wMjYwLTRjYzAtYjg3NS0xODdlZmJm&#xa;ZWU2Mjc7Ym9va19tYW5hZ2VyLmNhdGVnb3JpZXMgLDE2MSw1NCwxOTlkZTk3MS1kYzM3LTRiZDQt&#xa;YTM4Ni1kMmI2NjAwZWM1NzA7"/>
+	<parameter name="bookId" class="java.lang.Integer"/>
+	<query language="sql"><![CDATA[SELECT b.title,
+	b.author,
+	b.isbn,
+	c.name AS category
+FROM book_manager.books b
+	JOIN book_manager.categories c ON 
+	 b.category_id = c.id 
+WHERE 
+	 b.id = $P{bookId}]]></query>
+	<field name="title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="title"/>
+		<property name="com.jaspersoft.studio.field.label" value="title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<field name="author" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="author"/>
+		<property name="com.jaspersoft.studio.field.label" value="author"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.label" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="books"/>
+	</field>
+	<field name="category" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="category"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="categories"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="72" splitType="Stretch">
+		<element kind="staticText" uuid="c9a90ab1-34c7-4127-885c-1d755a85ae28" x="80" y="10" width="400" height="50" fontSize="33.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[BOOK INFORMATION]]></text>
+		</element>
+	</title>
+	<detail>
+		<band height="155" splitType="Stretch">
+			<element kind="staticText" uuid="498a9049-711a-4f13-92f7-dd927c2d2fe5" x="40" y="5" width="120" height="30" fontSize="22.0">
+				<text><![CDATA[Title : ]]></text>
+			</element>
+			<element kind="textField" uuid="b257f840-5d38-4d9d-af95-3d728ad5f9f0" x="160" y="5" width="210" height="30" fontSize="22.0">
+				<expression><![CDATA[$F{title}]]></expression>
+			</element>
+			<element kind="staticText" uuid="b0622804-0bfa-4c06-ac43-baf44df50c2d" x="40" y="40" width="120" height="30" fontSize="22.0">
+				<text><![CDATA[Author : ]]></text>
+			</element>
+			<element kind="textField" uuid="510a0ce5-02af-44b1-8faa-86f0d98a0da6" x="160" y="40" width="210" height="30" fontSize="22.0">
+				<expression><![CDATA[$F{author}]]></expression>
+			</element>
+			<element kind="staticText" uuid="b07ca78f-a5eb-4ee3-ba60-ae5a809ee74f" x="40" y="80" width="120" height="30" fontSize="22.0">
+				<text><![CDATA[ISBN : ]]></text>
+			</element>
+			<element kind="textField" uuid="f83f9674-7f64-46a3-8f75-8d5066162a89" x="160" y="80" width="210" height="30" fontSize="22.0">
+				<expression><![CDATA[$F{isbn}]]></expression>
+			</element>
+			<element kind="staticText" uuid="c36154e7-652a-4bde-afca-f2c6179a727b" x="40" y="114" width="120" height="30" fontSize="22.0">
+				<text><![CDATA[Category : ]]></text>
+			</element>
+			<element kind="textField" uuid="4bb9495c-1bae-4e45-9aaa-32ccc76990f4" x="160" y="114" width="210" height="30" fontSize="22.0">
+				<expression><![CDATA[$F{category}]]></expression>
+			</element>
+		</band>
+	</detail>
+</jasperReport>
