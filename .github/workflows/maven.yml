@@ -50,7 +50,7 @@ jobs:
       - name: Build & push Docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: sajjadhossain0/docker run -p 8080:8080 sajjadhossain0/book_cicd:main-db75eedbook_cicd
+          image: sajjadhossain0/book_cicd
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{secrets.DOCKER_USERNAME}}
