@@ -1,10 +1,71 @@
+<!-- templates/report.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Reports</title>
+
+    <!-- Bootstrap CSS লিংক -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .report-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fdfdfd;
+            text-align: center;
+        }
+
+        .report-container h1 {
+            font-size: 32px;
+            color: #333;
+        }
+
+        .report-container p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .report-btn {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .report-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+<!-- Include header -->
+<div th:insert="~{fragments :: header}"></div>
+
+<!--report for get all book info-->
+<div class="report-container">
+    <h1> Book Reports</h1>
+    <p>Generate a PDF report of all the books in the system.</p>
+
+    <a class="report-btn" th:href="@{/report/books}" target="_blank">Download PDF</a>
+</div>
+
+<!--report for get book info by id-->
+<div class="report-container">
+    <form method="get" th:action="@{/report/bookById}" style="margin-top: 30px;">
+        <label for="bookId">Enter Book ID:</label><br>
+        <input type="number" name="bookId" id="bookId" placeholder="e.g. 2" required>
+        <br><br>
+        <button type="submit" class="report-btn">Generate Report by ID</button>
+    </form>
+</div>
 
 </body>
 </html>
