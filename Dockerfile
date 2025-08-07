@@ -1,14 +1,4 @@
-FROM openjdk:8
+FROM eclipse-temurin:21-jdk
 EXPOSE 8080
-ADD target/book_cicd.jar book_cicd.jar
-ENTRYPOINT ["java","-jar","/book_cicd.jar"]
-
-
-
-
-
-
-
-
-
-
+ADD target/book_cicd.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
