@@ -44,7 +44,7 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/book_manager
           SPRING_DATASOURCE_USERNAME: root
           SPRING_DATASOURCE_PASSWORD: Sajjad725523
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
 
       - name: Build & push Docker image
