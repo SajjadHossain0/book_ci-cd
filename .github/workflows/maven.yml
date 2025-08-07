@@ -34,17 +34,16 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Wait for MySQL to be ready
+      - name: Wait for MySQL to be ready with query
         run: |
           for i in {1..30}; do
-            if mysqladmin ping -hmysql -uroot -proot --silent; then
-              echo " MySQL is up!"
+            if mysql -hmysql -uroot -proot -e "USE book_manager; SELECT 1;" > /dev/null 2>&1; then
+              echo " MySQL is query-ready!"
               break
             fi
-            echo "⏳ Waiting for MySQL to be ready..."
+            echo " Waiting for MySQL to be query-ready..."
             sleep 2
           done
-      
       
 
       - name: Build with Maven
