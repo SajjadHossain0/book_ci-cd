@@ -47,12 +47,7 @@ jobs:
       
 
       - name: Build with Maven
-        env:
-          SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/book_manager
-          SPRING_DATASOURCE_USERNAME: root
-          SPRING_DATASOURCE_PASSWORD: root
         run: mvn clean install -DskipTests
-
 
 
       - name: Build & push Docker image
